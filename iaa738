@@ -3,33 +3,31 @@ echo "Directory:"; pwd
 
 while true
 do 
-	echo "Enter file name: "
-	read 
-	name=$PWD/$REPLY
-	if [ ! -f $name ] 
+	echo "Введите имя файла "
+	read file
+	if [ ! -f $file ] 
 	then 
-		echo "file not found"
+		echo "Файл не найден"
 	else 
-		echo "Enter user name" 
+		echo "Введите имя пользователя" 
 		read username
-
-		rules="stat -c %$username $name"
-		eval $rules
+		usr="user:"$username":"
+		echo "У пользователя $username на $file следующие права: "$(getfacl "$file" | grep "$username" | sed  "s/${usr}//g")
 	fi
 
 
 	while : 
 	do  
-		echo "Prodolgyt?(y/n)"
+		echo "Продолжить?(y/n)"
 		read cont 
 		if test $cont = "y"; then
 			echo 
 			break
 		elif test $cont = "n"; then
-			echo "Close" 
+			echo "Выход" 
 			exit
 		else 
-			echo "Input Error"
+			echo "Некорректный ввод"
 		fi
 	done
 done 
