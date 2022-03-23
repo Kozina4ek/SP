@@ -1,5 +1,9 @@
-FROM alpine
-MAINTAINER Ivanova Alina
-RUN apk update && apk upgrade && apk add vim && apk add bash && apk add acl
-WORKDIR /lab1
+FROM ubuntu
+MAINTAINER iaa_738
 COPY ../ .
+RUN apt-get update
+RUN apt-get install -y vim
+RUN apt-get install -y binutils
+RUN apt-get update
+RUN apt-get install -y gcc-multilib
+WORKDIR /Lab2
