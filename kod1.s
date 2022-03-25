@@ -56,7 +56,7 @@ exit:
 overfl:
 	push $print_p
 	call printf
-	addl $8, %esp
+	addl $4, %esp
 	movl $0, %ecx
 	movl $0, %ebx
 	movl $0, %eax
