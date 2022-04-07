@@ -1,9 +1,9 @@
-FROM ubuntu
-MAINTAINER iaa_738
-COPY ../ .
-RUN apt-get update
+FROM debian
+RUN apt-get update 
+RUN apt-get install -y g++
 RUN apt-get install -y vim
-RUN apt-get install -y binutils
-RUN apt-get update
-RUN apt-get install -y gcc-multilib
-WORKDIR /Lab2
+RUN apt-get install -y gdb
+WORKDIR /lab3
+COPY ./main.cpp .
+RUN g++ ./main.cpp
+
